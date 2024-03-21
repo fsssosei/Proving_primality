@@ -1,5 +1,5 @@
 from itertools import takewhile
-from gmpy2 import mpz, ceil, f_mod, sqrt, log, is_strong_prp
+from gmpy2 import mpz, ceil, f_mod, log, is_strong_prp
 
 initial_prime_number_list = [2, 3, 5, 7, 11, 13]
 strong_pseudoprime_list = [2047, 1373653, 25326001, 3215031751, 2152302898747, 3474749660383, 341550071728321, 341550071728321, 3825123056546413051, 3825123056546413051, 3825123056546413051, 318665857834031151167461, 3317044064679887385961981]  #https://arxiv.org/pdf/1207.0063.pdf; https://oeis.org/A014233
@@ -12,7 +12,7 @@ def miller_test(n):
         else:
             return False
     elif n <= initial_prime_number_list[-1] ** 2:
-        if all(map(lambda p: (n % p) != 0, takewhile(lambda x: x <= sqrt(n), initial_prime_number_list))):
+        if all(map(lambda p: (n % p) != 0, takewhile(lambda x: x * x <= n, initial_prime_number_list))):
             return True
         else:
             return False
