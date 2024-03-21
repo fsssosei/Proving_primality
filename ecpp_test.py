@@ -1,5 +1,5 @@
 from itertools import takewhile
-from gmpy2 import f_mod, sqrt, is_strong_prp
+from gmpy2 import f_mod, is_strong_prp
 from nzmath import ecpp
 
 initial_prime_number_list = [2, 3, 5, 7, 11, 13]
@@ -13,7 +13,7 @@ def ecpp_test(n):
         else:
             return False
     elif n <= initial_prime_number_list[-1] ** 2:
-        if all(map(lambda p: (n % p) != 0, takewhile(lambda x: x <= sqrt(n), initial_prime_number_list))):
+        if all(map(lambda p: (n % p) != 0, takewhile(lambda x: x * x <= n, initial_prime_number_list))):
             return True
         else:
             return False
