@@ -1,5 +1,5 @@
 from itertools import takewhile
-from gmpy2 import f_mod, is_strong_prp
+from gmpy2 import is_strong_prp
 from nzmath import ecpp
 
 initial_prime_number_list = [2, 3, 5, 7, 11, 13]
@@ -17,7 +17,7 @@ def ecpp_test(n):
             return True
         else:
             return False
-    elif any(map(lambda p: f_mod(n, p) == 0, initial_prime_number_list)):
+    elif any(map(lambda p: (n % p) == 0, initial_prime_number_list)):
         return False
     elif n < strong_pseudoprime:
         if all(map(lambda a: is_strong_prp(n, a), initial_prime_number_list)):
