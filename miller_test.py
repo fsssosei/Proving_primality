@@ -24,8 +24,8 @@ def miller_test(n):
         else:
             return False
     else:
-        m = mpz(ceil((log(n)**2)*2))
-        if all(map(lambda a: is_strong_prp(n, a), range(2, m))):
+        m = mpz(ceil((log(n) ** 2) * 2))
+        if all(map(lambda a: is_strong_prp(n, a), range(2, m + 1))):
             return True
         else:
             return False
